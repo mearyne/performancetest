@@ -19,8 +19,8 @@ class BoardController(
     @PostMapping
     fun create(
         @RequestBody boardDto: BoardDto
-    ) {
-        boardService.create(boardDto)
+    ):BoardDto {
+        return boardService.create(boardDto)
     }
 
     @GetMapping("/{id}")

@@ -8,14 +8,20 @@ class BoardService(
 ) {
     fun create(
         boardDto: BoardDto
-    ) {
+    ):BoardDto {
         val boardEntity = BoardEntity(
             title = boardDto.title,
             content = boardDto.content,
             name = boardDto.name,
         )
 
-        boardRepository.save(boardEntity)
+        val savedBoardEntity = boardRepository.save(boardEntity)
+        return BoardDto(
+            id = savedBoardEntity.id,
+            title = savedBoardEntity.title,
+            content = savedBoardEntity.content,
+            name = savedBoardEntity.name
+        )
     }
 
     fun getAll(): List<BoardDto> {

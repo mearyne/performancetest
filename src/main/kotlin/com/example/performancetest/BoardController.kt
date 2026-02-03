@@ -1,6 +1,8 @@
 package com.example.performancetest
 
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
@@ -32,5 +34,20 @@ class BoardController(
     fun getAll(): List<BoardDto> {
         return boardService.getAll()
     }
+
+    @PatchMapping
+    fun update(
+        @RequestBody boardDto: BoardDto
+    ) {
+        boardService.update(boardDto)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteById(
+        @PathVariable id: Long
+    ) {
+        boardService.deleteById(id)
+    }
+
 
 }

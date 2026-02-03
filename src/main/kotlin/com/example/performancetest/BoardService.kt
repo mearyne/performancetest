@@ -44,4 +44,17 @@ class BoardService(
         )
         return boardDto
     }
+
+    fun update(boardDto: BoardDto) {
+        val id = boardDto.id!! // 절대 null이 아니다
+        val boardEntity = boardRepository.findById(id).get()
+
+        boardEntity.update(boardDto)
+
+        boardRepository.save(boardEntity)
+    }
+
+    fun deleteById(id: Long) {
+        boardRepository.deleteById(id)
+    }
 }

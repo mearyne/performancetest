@@ -17,4 +17,9 @@ class BoardEntity(
     val name: String,
 
 //    val createAt: LocalTime = LocalTime.now(),
-)
+) {
+    fun update(boardDto: BoardDto) {
+        this.title = boardDto.title
+        this.content = boardDto.content
+    }
+}
